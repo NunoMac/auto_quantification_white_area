@@ -1,10 +1,24 @@
+//First step: go the the line starting with 'folder' (around line 20) and substitute the path with path where your images are
+//	you probably need to use double backslashes '\\' instead of normal slashes for it to work ('/')
+//Second step: go to the next line ('open....') and substitute the path expression with the name of the image to be analyzed
+//Third step: press Ctr+R to run the macro and wait a few seconds
+//	the macro will create new tables and images until an instructions box shows up
+//Fourth step: while the text box is open, you can draw areas that should have been included automatically, and areas that ahould have not been included.
+//		a total of 4 boxes appear; you draw the first area, press 'Ok', draw the second area, press 'Ok', etc
+Fifth step: the area in pixels will appear in the Results table, and new image will have the quantified area drawn in yellow and saved to your folder, so you can check if everything is fine
+//	you can copy those results to an Excel file for further analysis
+//	a Log window will open with the quantification of the area in mm2, but you can probably ignore that
+//		that value will be useful if you have an internal control for the pixels/mm2 in you images and chenge the value attributed to the pixels_per_mm2 variable
+
+
+
 run("Close All");
 roiManager("reset");
 
 
 
-folder = "C:\\Users\\SaraSantos\\Desktop\\Ovaries quantification\\";
-open(folder + "SaraS_027.tiff");
+folder = "C:\\Users\\user\\documents\\Ovaries\\";
+open(folder + "image 1.tiff");
 run("8-bit");
 title = getTitle();
 run("Duplicate...", "title=Duplicated");
@@ -120,9 +134,9 @@ function export_total_area_value(){
 	pixels_per_mm2 = 270150; //pixels/mm2
 	area_mm2 = getResult("Area", nResults-1)/pixels_per_mm2; //calculate area of ovaries in mm2
 	
-	setResult("area_mm2", nResults-1 , area_mm2); //add to Results; ADDING WITHOUT DECIMAL PLACES
+	setResult("area_mm2", nResults-1 , area_mm2); //add to Results; NEEDS CORRECTION: ADDING WITHOUT DECIMAL PLACES
 	print(area_mm2); //temporary workaround to get area with decimal places
 	run("Flatten"); //new image to save with final area drawn
-	saveAs("Tiff", "C:/Users/SaraSantos/Desktop/Ovaries quantification/"+ title + "with areas" + ".tiff"); // save image with areas selected
+	saveAs("Tiff", folder + title + "with areas" + ".tiff"); // save image with areas selected
 }
 
