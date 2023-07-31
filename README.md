@@ -10,14 +10,17 @@ It will detect and quantify the two largest areas and let you add 2 missed areas
 4. The macro will now be available in the ImageJ menu under Plugins > Macros > auto_quantification_white_area.
 
 **Usage**  
+
  It should now be open in a new window with easy intructions to follow on the top.
  Do not change any other lines besides the ones intructed, unless you know what you are doing.
  The macro will automatically detect the white area in the image, display the results in a table, and save a copy of the image with the quantified area drawn.
 
 **License**  
+
 This software is released under the MIT License.
 
 **Acknowledgments**  
+
 This macro was developed by Nuno Machado.
 Images for testing and optimization provided by Sara Santos.
 
